@@ -34,7 +34,7 @@ func New(enabledPlugins []string) *Manager {
 }
 
 func (manager *Manager) Handle(msg *phoenix.Message) string {
-	resp := ""
+	resp := "unknown plugin"
 	parts := strings.Split(msg.Text, " ")
 	if len(parts) > 1 {
 		// check for enabled plugin
