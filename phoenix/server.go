@@ -66,6 +66,7 @@ func (server *Server) indexHandler(w http.ResponseWriter, r *http.Request) {
 		Text:        text,
 		TriggerWord: triggerWord,
 	}
+	logger.Info(message)
 	respText := server.PluginManager.Handle(message)
 	resp := phoenix.Response{
 		Text: respText,
