@@ -2,6 +2,7 @@ package plugins
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/Sirupsen/logrus"
 	"github.com/ehazlett/phoenix"
@@ -34,26 +35,29 @@ func New(enabledPlugins []string) *Manager {
 
 func (manager *Manager) Handle(msg *phoenix.Message) string {
 	resp := ""
-	// check for enabled plugin
-	for _, p := range manager.enabledPlugins {
-		// check if plugin matches trigger
-		if msg.TriggerWord == p {
-			for _, plugin := range manager.plugins {
-				// if enabled plugin found, execute
-				if plugin.Name() == p {
-					logger.WithFields(logrus.Fields{
-						"name":    plugin.Name(),
-						"version": plugin.Version(),
-						"author":  plugin.Author(),
-					}).Infof("running plugin")
-					r, err := plugin.Handle(msg)
-					if err != nil {
-						logMsg := fmt.Sprintf("error handling message: %s", err)
-						logger.Errorf(logMsg)
-						r = logMsg
+	parts := strings.Split(msg.Text, " ")
+	if len(parts) > 1 {
+		// check for enabled plugin
+		for _, p := range manager.enabledPlugins {
+			// check if plugin matches trigger
+			if parts[1] == p {
+				for _, plugin := range manager.plugins {
+					// if enabled plugin found, execute
+					if plugin.Name() == p {
+						logger.WithFields(logrus.Fields{
+							"name":    plugin.Name(),
+							"version": plugin.Version(),
+							"author":  plugin.Author(),
+						}).Infof("running plugin")
+						r, err := plugin.Handle(msg)
+						if err != nil {
+							logMsg := fmt.Sprintf("error handling message: %s", err)
+							logger.Errorf(logMsg)
+							r = logMsg
+						}
+						resp = r
+						break
 					}
-					resp = r
-					break
 				}
 			}
 		}
