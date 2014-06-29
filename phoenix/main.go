@@ -25,6 +25,9 @@ func init() {
 func main() {
 	logger.Infof("phoenix v%s", version)
 	pluginList = strings.Split(pluginStr, ",")
+	logger.WithFields(logrus.Fields{
+		"names": pluginList,
+	}).Info("enabling plugins")
 	manager := plugins.New(pluginList)
 	server := NewServer(manager, listenAddr)
 	server.Run()
