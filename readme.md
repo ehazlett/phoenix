@@ -1,6 +1,10 @@
 # Phoenix
 Pluggable bot for [Slack](http://slack.com)
 
+# Example
+
+![Image](http://i.imgur.com/4EzXslw.png)
+
 # Usage
 
 Show Help
