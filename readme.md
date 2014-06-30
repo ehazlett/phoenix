@@ -34,6 +34,11 @@ Simple example plugin for reference
 
 Name: `example`
 
+## Base64
+Base64 encoding
+
+Name: `base64`
+
 ## Giphy
 [GiphyAPI](https://github.com/giphy/GiphyAPI) search.  Returns Gif links.
 

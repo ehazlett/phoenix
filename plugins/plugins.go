@@ -31,6 +31,7 @@ func New(enabledPlugins []string) *Manager {
 	// plugins
 	plugins["example"] = Example()
 	plugins["giphy"] = Giphy()
+	plugins["base64"] = Base64()
 	// manager
 	manager := &Manager{
 		plugins:        plugins,
