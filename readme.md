@@ -3,6 +3,8 @@ Pluggable bot for [Slack](http://slack.com)
 
 # Usage
 
+`docker run -P ehazlett/phoenix -h`
+
 # Plugins
 To use a plugin, specify the plugin name as the "trigger word" in the Slack message.  For example: `phoenix example foo` (assuming you have setup a word match for `phoenix`).
 
