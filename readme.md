@@ -54,6 +54,11 @@ Name: `commandlinefu`
 
 Name: `giphy`
 
+## Hackernews
+Returns latest posts from hackernews
+
+Name: `hn`
+
 Environment Variables
 
 * `GIPHY_API_KEY`: Giphy API Key.  See https://github.com/giphy/GiphyAPI for details.

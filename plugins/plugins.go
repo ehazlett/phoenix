@@ -34,6 +34,7 @@ func New(enabledPlugins []string) *Manager {
 	plugins["commandlinefu"] = CommandLineFu()
 	plugins["example"] = Example()
 	plugins["giphy"] = Giphy()
+	plugins["hn"] = Hackernews()
 	// manager
 	manager := &Manager{
 		plugins:        plugins,
