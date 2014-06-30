@@ -3,7 +3,12 @@ Pluggable bot for [Slack](http://slack.com)
 
 # Usage
 
+Show Help
+
 `docker run -P ehazlett/phoenix -h`
+
+Run with Plugins
+`docker run -P -e GIPHY_API_KEY=12345 ehazlett/phoenix -plugins example,giphy`
 
 # Plugins
 To use a plugin, specify the plugin name as the "trigger word" in the Slack message.  For example: `phoenix example foo` (assuming you have setup a word match for `phoenix`).
