@@ -61,9 +61,10 @@ func (plugin HackernewsPlugin) Handle(message *phoenix.Message) (string, error) 
 	if err != nil {
 		return "", err
 	}
-	data := "HN Latest\n"
-	for _, r := range resp.Items.ItemList {
-		data += fmt.Sprintf("   %s %s\n", r.Title, r.Link)
+	data := ""
+	items := resp.Items.ItemList[:9]
+	for _, r := range items {
+		data += fmt.Sprintf("%s %s\n", r.Title, r.Link)
 	}
 	return data, nil
 }
