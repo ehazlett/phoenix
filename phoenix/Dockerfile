@@ -1,5 +1,4 @@
 FROM google/golang-runtime
-
 WORKDIR /gopath/src/app
 ADD . /gopath/src/app/
 RUN go get app

@@ -1,6 +1,10 @@
 package main
 
 import (
+	// this import is needed for the HN plugin.  the ssl cert for HN uses
+	// an algorithm that isn't available by default (sha384)
+	// https://groups.google.com/forum/#!topic/Golang-nuts/hqm_ssUNUtI for details
+	_ "crypto/sha512"
 	"flag"
 	"strings"
 
