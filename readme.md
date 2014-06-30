@@ -15,6 +15,15 @@ Run with Plugins
 
 `docker run -P -e GIPHY_API_KEY=12345 ehazlett/phoenix -plugins example,giphy`
 
+# Setup
+
+* Run an instance of phoenix (see above) at an internet accessible URL
+* Create an [Outgoing Webhook](https://my.slack.com/services/new/outgoing-webhook) in Slack
+  * Set Channel (I use "Any")
+  * Set trigger words (I use "phx,phoenix")
+  * Enter the above URL under "URLs"
+  * (optional) customize bot look and feel
+
 # Plugins
 To use a plugin, specify the plugin name as the "trigger word" in the Slack message.  For example: `phoenix example foo` (assuming you have setup a word match for `phoenix`).
 
