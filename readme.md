@@ -55,7 +55,7 @@ Name: `commandlinefu`
 Name: `giphy`
 
 ## Hackernews
-Returns latest posts from hackernews
+Returns top 10 posts from hackernews
 
 Name: `hn`
 
