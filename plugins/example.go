@@ -5,10 +5,6 @@ import (
 	"github.com/ehazlett/phoenix"
 )
 
-var (
-	logger = logrus.New()
-)
-
 type (
 	ExamplePlugin struct {
 		name    string

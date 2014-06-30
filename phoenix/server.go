@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/ehazlett/phoenix"
@@ -44,7 +45,7 @@ func (server *Server) indexHandler(w http.ResponseWriter, r *http.Request) {
 	channelName := r.FormValue("channel_name")
 	userId := r.FormValue("user_id")
 	username := r.FormValue("user_name")
-	text := r.FormValue("text")
+	fullText := r.FormValue("text")
 	triggerWord := r.FormValue("trigger_word")
 	t := r.FormValue("timestamp")
 	timestamp, err := strconv.ParseFloat(t, 64)
@@ -55,20 +56,31 @@ func (server *Server) indexHandler(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(msg))
 		return
 	}
+	// parse plugin name and text
+	parts := strings.Split(fullText, " ")
+	text := ""
+	pluginName := ""
+	if len(parts) > 1 {
+		pluginName = parts[1]
+		text = strings.Join(parts[2:], " ")
+	}
 	message := &phoenix.Message{
 		Token:       token,
 		TeamId:      teamId,
 		ChannelId:   channelId,
 		ChannelName: channelName,
+		PluginName:  pluginName,
 		Timestamp:   time.Unix(int64(timestamp), 0),
 		UserId:      userId,
 		Username:    username,
 		Text:        text,
+		FullText:    fullText,
 		TriggerWord: triggerWord,
 	}
 	respText := server.PluginManager.Handle(message)
 	resp := phoenix.Response{
-		Text: respText,
+		Text:  respText,
+		Parse: "full",
 	}
 	b, err := json.Marshal(resp)
 	if err != nil {

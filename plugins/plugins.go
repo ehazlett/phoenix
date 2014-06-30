@@ -2,10 +2,13 @@ package plugins
 
 import (
 	"fmt"
-	"strings"
 
 	"github.com/Sirupsen/logrus"
 	"github.com/ehazlett/phoenix"
+)
+
+var (
+	logger = logrus.New()
 )
 
 type (
@@ -25,7 +28,10 @@ type (
 func New(enabledPlugins []string) *Manager {
 	// initialize plugins
 	plugins := make(map[string]Plugin)
+	// plugins
 	plugins["example"] = Example()
+	plugins["giphy"] = Giphy()
+	// manager
 	manager := &Manager{
 		plugins:        plugins,
 		enabledPlugins: enabledPlugins,
@@ -35,12 +41,11 @@ func New(enabledPlugins []string) *Manager {
 
 func (manager *Manager) Handle(msg *phoenix.Message) string {
 	resp := "unknown plugin"
-	parts := strings.Split(msg.Text, " ")
-	if len(parts) > 1 {
+	if msg.Text != "" {
 		// check for enabled plugin
 		for _, p := range manager.enabledPlugins {
 			// check if plugin matches trigger
-			if parts[1] == p {
+			if msg.PluginName == p {
 				for _, plugin := range manager.plugins {
 					// if enabled plugin found, execute
 					if plugin.Name() == p {
@@ -48,6 +53,7 @@ func (manager *Manager) Handle(msg *phoenix.Message) string {
 							"name":    plugin.Name(),
 							"version": plugin.Version(),
 							"author":  plugin.Author(),
+							"text":    msg.Text,
 						}).Infof("running plugin")
 						r, err := plugin.Handle(msg)
 						if err != nil {

@@ -13,7 +13,9 @@ type (
 		Timestamp   time.Time
 		UserId      string
 		Username    string
+		PluginName  string
 		Text        string
+		FullText    string
 		TriggerWord string
 	}
 
