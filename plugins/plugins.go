@@ -29,10 +29,11 @@ func New(enabledPlugins []string) *Manager {
 	// initialize plugins
 	plugins := make(map[string]Plugin)
 	// plugins
-	plugins["example"] = Example()
-	plugins["giphy"] = Giphy()
 	plugins["base64"] = Base64()
 	plugins["chucknorris"] = ChuckNorris()
+	plugins["commandlinefu"] = CommandLineFu()
+	plugins["example"] = Example()
+	plugins["giphy"] = Giphy()
 	// manager
 	manager := &Manager{
 		plugins:        plugins,

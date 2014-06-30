@@ -44,6 +44,11 @@ Chuck Norris awesomeness
 
 Name: `chucknorris`
 
+## CommandLineFu
+Returns commands from commandlinefu.com
+
+Name: `commandlinefu`
+
 ## Giphy
 [GiphyAPI](https://github.com/giphy/GiphyAPI) search.  Returns Gif links.
 
