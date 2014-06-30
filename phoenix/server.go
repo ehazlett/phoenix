@@ -59,10 +59,11 @@ func (server *Server) indexHandler(w http.ResponseWriter, r *http.Request) {
 	// parse plugin name and text
 	parts := strings.Split(fullText, " ")
 	text := ""
-	pluginName := ""
-	if len(parts) > 1 {
-		pluginName = parts[1]
-		text = strings.Join(parts[2:], " ")
+	pluginName := parts[1]
+	if len(parts) >= 2 {
+		if len(parts) >= 2 {
+			text = strings.Join(parts[2:], " ")
+		}
 	}
 	message := &phoenix.Message{
 		Token:       token,

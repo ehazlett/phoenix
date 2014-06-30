@@ -32,6 +32,7 @@ func New(enabledPlugins []string) *Manager {
 	plugins["example"] = Example()
 	plugins["giphy"] = Giphy()
 	plugins["base64"] = Base64()
+	plugins["chucknorris"] = ChuckNorris()
 	// manager
 	manager := &Manager{
 		plugins:        plugins,
@@ -42,7 +43,7 @@ func New(enabledPlugins []string) *Manager {
 
 func (manager *Manager) Handle(msg *phoenix.Message) string {
 	resp := "unknown plugin"
-	if msg.Text != "" {
+	if msg.PluginName != "" {
 		// check for enabled plugin
 		for _, p := range manager.enabledPlugins {
 			// check if plugin matches trigger

@@ -39,6 +39,11 @@ Base64 encoding
 
 Name: `base64`
 
+## Chuck Norris
+Chuck Norris awesomeness
+
+Name: `chucknorris`
+
 ## Giphy
 [GiphyAPI](https://github.com/giphy/GiphyAPI) search.  Returns Gif links.
 
