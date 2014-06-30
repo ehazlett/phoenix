@@ -8,6 +8,7 @@ Show Help
 `docker run -P ehazlett/phoenix -h`
 
 Run with Plugins
+
 `docker run -P -e GIPHY_API_KEY=12345 ehazlett/phoenix -plugins example,giphy`
 
 # Plugins
