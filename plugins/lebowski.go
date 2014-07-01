@@ -68,7 +68,7 @@ func (plugin LebowskiPlugin) Handle(message *phoenix.Message) (string, error) {
 	}
 	data := ""
 	for _, line := range resp.Quote.Lines {
-		data += fmt.Sprintf("> %s: %s\n", line.Character.Name, line.Text)
+		data += fmt.Sprintf("> *%s*: %s\n", line.Character.Name, line.Text)
 	}
 	return data, nil
 }
