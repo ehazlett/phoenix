@@ -54,14 +54,19 @@ Name: `commandlinefu`
 
 Name: `giphy`
 
+Environment Variables
+
+* `GIPHY_API_KEY`: Giphy API Key.  See https://github.com/giphy/GiphyAPI for details.
+
 ## Hackernews
 Returns top 10 posts from hackernews
 
 Name: `hn`
 
-Environment Variables
+## Lebowski
+Random quotes from The Big Lebowski
 
-* `GIPHY_API_KEY`: Giphy API Key.  See https://github.com/giphy/GiphyAPI for details.
+Name: `lebowski`
 
 # Developing Plugins
 You can create your own plugins.  Check the `plugins/example.go` for reference.
