@@ -14,9 +14,10 @@ var (
 
 type (
 	LebowskiPlugin struct {
-		name    string
-		version string
-		author  string
+		name        string
+		version     string
+		author      string
+		description string
 	}
 
 	LebowskiResponse struct {
@@ -41,9 +42,10 @@ type (
 
 func Lebowski() Plugin {
 	plugin := LebowskiPlugin{
-		name:    "lebowski",
-		version: "0.1",
-		author:  "ehazlett",
+		name:        "lebowski",
+		version:     "0.1",
+		author:      "ehazlett",
+		description: "random quotes from The Big Lebowski",
 	}
 	return plugin
 }
@@ -58,6 +60,10 @@ func (plugin LebowskiPlugin) Version() string {
 
 func (plugin LebowskiPlugin) Author() string {
 	return plugin.author
+}
+
+func (plugin LebowskiPlugin) Description() string {
+	return plugin.description
 }
 
 func (plugin LebowskiPlugin) Handle(message *phoenix.Message) (string, error) {

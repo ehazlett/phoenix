@@ -17,10 +17,11 @@ var (
 
 type (
 	GiphyPlugin struct {
-		name    string
-		version string
-		author  string
-		apiKey  string
+		name        string
+		version     string
+		author      string
+		description string
+		apiKey      string
 	}
 
 	GiphyResponse struct {
@@ -60,10 +61,11 @@ type (
 func Giphy() Plugin {
 	apiKey := os.Getenv("GIPHY_API_KEY")
 	plugin := GiphyPlugin{
-		name:    "giphy",
-		version: "0.1",
-		author:  "ehazlett",
-		apiKey:  apiKey,
+		name:        "giphy",
+		version:     "0.1",
+		author:      "ehazlett",
+		description: "searchs giphy for specified gif",
+		apiKey:      apiKey,
 	}
 	return plugin
 }
@@ -78,6 +80,10 @@ func (plugin GiphyPlugin) Version() string {
 
 func (plugin GiphyPlugin) Author() string {
 	return plugin.author
+}
+
+func (plugin GiphyPlugin) Description() string {
+	return plugin.description
 }
 
 func (plugin GiphyPlugin) Handle(message *phoenix.Message) (string, error) {

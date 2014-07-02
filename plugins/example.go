@@ -7,17 +7,19 @@ import (
 
 type (
 	ExamplePlugin struct {
-		name    string
-		version string
-		author  string
+		name        string
+		version     string
+		author      string
+		description string
 	}
 )
 
 func Example() Plugin {
 	plugin := ExamplePlugin{
-		name:    "example",
-		version: "0.1",
-		author:  "ehazlett",
+		name:        "example",
+		version:     "0.1",
+		author:      "ehazlett",
+		description: "example plugin",
 	}
 	return plugin
 }
@@ -32,6 +34,10 @@ func (plugin ExamplePlugin) Version() string {
 
 func (plugin ExamplePlugin) Author() string {
 	return plugin.author
+}
+
+func (plugin ExamplePlugin) Description() string {
+	return plugin.description
 }
 
 func (plugin ExamplePlugin) Handle(message *phoenix.Message) (string, error) {

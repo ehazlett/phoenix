@@ -14,10 +14,11 @@ var (
 
 type (
 	HackernewsPlugin struct {
-		name    string
-		version string
-		author  string
-		apiKey  string
+		name        string
+		version     string
+		author      string
+		description string
+		apiKey      string
 	}
 
 	HackernewsChannel struct {
@@ -37,9 +38,10 @@ type (
 
 func Hackernews() Plugin {
 	plugin := HackernewsPlugin{
-		name:    "hn",
-		version: "0.1",
-		author:  "ehazlett",
+		name:        "hn",
+		version:     "0.1",
+		author:      "ehazlett",
+		description: "shows top 10 posts from hackernews",
 	}
 	return plugin
 }
@@ -54,6 +56,10 @@ func (plugin HackernewsPlugin) Version() string {
 
 func (plugin HackernewsPlugin) Author() string {
 	return plugin.author
+}
+
+func (plugin HackernewsPlugin) Description() string {
+	return plugin.description
 }
 
 func (plugin HackernewsPlugin) Handle(message *phoenix.Message) (string, error) {

@@ -14,10 +14,11 @@ var (
 
 type (
 	ChuckNorrisPlugin struct {
-		name    string
-		version string
-		author  string
-		apiKey  string
+		name        string
+		version     string
+		author      string
+		description string
+		apiKey      string
 	}
 
 	IcndbResponse struct {
@@ -33,9 +34,10 @@ type (
 
 func ChuckNorris() Plugin {
 	plugin := ChuckNorrisPlugin{
-		name:    "chucknorris",
-		version: "0.1",
-		author:  "ehazlett",
+		name:        "chucknorris",
+		version:     "0.1",
+		author:      "ehazlett",
+		description: "random chuck norris awesomeness",
 	}
 	return plugin
 }
@@ -50,6 +52,10 @@ func (plugin ChuckNorrisPlugin) Version() string {
 
 func (plugin ChuckNorrisPlugin) Author() string {
 	return plugin.author
+}
+
+func (plugin ChuckNorrisPlugin) Description() string {
+	return plugin.description
 }
 
 func (plugin ChuckNorrisPlugin) Handle(message *phoenix.Message) (string, error) {
