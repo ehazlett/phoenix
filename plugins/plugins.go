@@ -67,7 +67,7 @@ func (manager *Manager) Handle(msg *phoenix.Message) string {
 	if msg.PluginName != "" {
 		// handle "special" plugins
 		switch msg.PluginName {
-		case "info":
+		case "plugins":
 			return manager.ShowPluginList()
 		default:
 			// check for enabled plugin
