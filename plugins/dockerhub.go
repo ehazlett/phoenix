@@ -16,9 +16,10 @@ var (
 
 type (
 	DockerHubPlugin struct {
-		name    string
-		version string
-		author  string
+		name        string
+		version     string
+		author      string
+		description string
 	}
 
 	DockerHubResponse struct {
@@ -35,9 +36,10 @@ type (
 
 func DockerHub() Plugin {
 	plugin := DockerHubPlugin{
-		name:    "dockerhub",
-		version: "0.1",
-		author:  "ehazlett",
+		name:        "dockerhub",
+		version:     "0.1",
+		author:      "ehazlett",
+		description: "searches dockerhub",
 	}
 	return plugin
 }
@@ -52,6 +54,10 @@ func (plugin DockerHubPlugin) Version() string {
 
 func (plugin DockerHubPlugin) Author() string {
 	return plugin.author
+}
+
+func (plugin DockerHubPlugin) Description() string {
+	return plugin.description
 }
 
 func (plugin DockerHubPlugin) Handle(message *phoenix.Message) (string, error) {

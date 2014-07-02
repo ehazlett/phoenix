@@ -8,17 +8,19 @@ import (
 
 type (
 	Base64Plugin struct {
-		name    string
-		version string
-		author  string
+		name        string
+		version     string
+		author      string
+		description string
 	}
 )
 
 func Base64() Plugin {
 	plugin := Base64Plugin{
-		name:    "base64",
-		version: "0.1",
-		author:  "ehazlett",
+		name:        "base64",
+		version:     "0.1",
+		author:      "ehazlett",
+		description: "encodes input as base64",
 	}
 	return plugin
 }
@@ -33,6 +35,10 @@ func (plugin Base64Plugin) Version() string {
 
 func (plugin Base64Plugin) Author() string {
 	return plugin.author
+}
+
+func (plugin Base64Plugin) Description() string {
+	return plugin.description
 }
 
 func (plugin Base64Plugin) Handle(message *phoenix.Message) (string, error) {

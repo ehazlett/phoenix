@@ -96,5 +96,7 @@ func (server *Server) indexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (server *Server) infoHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "phoenix %s", version)
+	fmt.Fprintf(w, "phoenix %s\n", version)
+	pluginList := server.PluginManager.ShowPluginList()
+	fmt.Fprintf(w, pluginList)
 }

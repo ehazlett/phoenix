@@ -16,10 +16,11 @@ var (
 
 type (
 	CommandLineFuPlugin struct {
-		name    string
-		version string
-		author  string
-		apiKey  string
+		name        string
+		version     string
+		author      string
+		description string
+		apiKey      string
 	}
 
 	CommandLineFuResponse struct {
@@ -32,9 +33,10 @@ type (
 
 func CommandLineFu() Plugin {
 	plugin := CommandLineFuPlugin{
-		name:    "commandlinefu",
-		version: "0.1",
-		author:  "ehazlett",
+		name:        "commandlinefu",
+		version:     "0.1",
+		author:      "ehazlett",
+		description: "command line usage and description from commandlinefu.com",
 	}
 	return plugin
 }
@@ -49,6 +51,10 @@ func (plugin CommandLineFuPlugin) Version() string {
 
 func (plugin CommandLineFuPlugin) Author() string {
 	return plugin.author
+}
+
+func (plugin CommandLineFuPlugin) Description() string {
+	return plugin.description
 }
 
 func (plugin CommandLineFuPlugin) Handle(message *phoenix.Message) (string, error) {
