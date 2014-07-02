@@ -73,5 +73,10 @@ Random quotes from The Big Lebowski
 
 Name: `lebowski`
 
+## LMGTFY
+Let me Google that for you
+
+Name: `lmgtfy`
+
 # Developing Plugins
 You can create your own plugins.  Check the `plugins/example.go` for reference.
