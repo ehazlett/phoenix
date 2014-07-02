@@ -70,7 +70,7 @@ func (plugin DockerHubPlugin) Handle(message *phoenix.Message) (string, error) {
 		res = res[:24]
 	}
 	for _, r := range res {
-		data += fmt.Sprintf("> %s", r.Name)
+		data += fmt.Sprintf("> *%s*", r.Name)
 		if r.Description != "" {
 			data += fmt.Sprintf(": %s", r.Description)
 		}
