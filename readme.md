@@ -49,6 +49,11 @@ Returns commands from commandlinefu.com
 
 Name: `commandlinefu`
 
+## DockerHub
+Searches DockerHub (shows top 15 results)
+
+Name: `dockerhub`
+
 ## Giphy
 [GiphyAPI](https://github.com/giphy/GiphyAPI) search.  Returns Gif links.
 

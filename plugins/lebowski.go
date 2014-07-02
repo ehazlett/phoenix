@@ -17,7 +17,6 @@ type (
 		name    string
 		version string
 		author  string
-		apiKey  string
 	}
 
 	LebowskiResponse struct {

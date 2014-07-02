@@ -35,6 +35,7 @@ func New(enabledPlugins []string) *Manager {
 	plugins["example"] = Example()
 	plugins["giphy"] = Giphy()
 	plugins["hn"] = Hackernews()
+	plugins["dockerhub"] = DockerHub()
 	plugins["lebowski"] = Lebowski()
 	// manager
 	manager := &Manager{
