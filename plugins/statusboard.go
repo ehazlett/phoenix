@@ -83,11 +83,16 @@ func (plugin StatusBoardPlugin) Handle(message *phoenix.Message) (string, error)
 	switch command {
 	case "update":
 		plugin.setUserStatus(username, text, message.Timestamp)
+		return "status updated", nil
 	case "user":
 		user := msgParts[1]
 		return plugin.getUserStatus(user), nil
 	case "report":
-		return plugin.getAllUserStatuses(), nil
+		allStatus := plugin.getAllUserStatuses()
+		if allStatus == "" {
+			allStatus = "no users have reported"
+		}
+		return allStatus, nil
 	default:
 		logger.WithFields(logrus.Fields{
 			"plugin":  "statusboard",
