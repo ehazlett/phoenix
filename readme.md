@@ -78,5 +78,16 @@ Let me Google that for you
 
 Name: `lmgtfy`
 
+## StatusBoard
+Record & report user status
+
+Name: `statusboard`
+
+Examples:
+
+* `statusboard update working on phoenix plugins` -- sets status
+* `statusboard user ehazlett` -- reports current status for username `ehazlett`
+* `statusboard report` -- reports current status for all users
+
 # Developing Plugins
 You can create your own plugins.  Check the `plugins/example.go` for reference.
