@@ -28,7 +28,24 @@ func StatusBoard() Plugin {
 		description: "records and reports user status",
 		status:      make(map[string]string),
 	}
+	plugin.resetTicker()
+	plugin.resetStatus()
 	return plugin
+}
+
+func (plugin StatusBoardPlugin) resetTicker() {
+	// watcher for resetting status
+	ticker := time.NewTicker(time.Minute * 1)
+	go func() {
+		for t := range ticker.C {
+			if t.Hour() == 7 && t.Minute() == 0 {
+				logger.WithFields(logrus.Fields{
+					"plugin": "statusboard",
+				}).Info("Resetting status")
+				plugin.resetStatus()
+			}
+		}
+	}()
 }
 
 func (plugin StatusBoardPlugin) Name() string {
@@ -53,6 +70,10 @@ func (plugin StatusBoardPlugin) setUserStatus(username, status string, timestamp
 		"status":   status,
 	}).Info("Updating Status")
 	plugin.status[username] = fmt.Sprintf("[%s] %s", timestamp, status)
+}
+
+func (plugin StatusBoardPlugin) resetStatus() {
+	plugin.status = make(map[string]string)
 }
 
 func (plugin StatusBoardPlugin) getUserStatus(username string) string {
