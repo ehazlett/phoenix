@@ -73,7 +73,9 @@ func (plugin StatusBoardPlugin) setUserStatus(username, status string, timestamp
 }
 
 func (plugin StatusBoardPlugin) resetStatus() {
-	plugin.status = make(map[string]string)
+	for k, _ := range plugin.status {
+		delete(plugin.status, k)
+	}
 }
 
 func (plugin StatusBoardPlugin) getUserStatus(username string) string {
