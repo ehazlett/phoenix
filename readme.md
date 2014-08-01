@@ -91,3 +91,12 @@ Examples:
 
 # Developing Plugins
 You can create your own plugins.  Check the `plugins/example.go` for reference.
+
+## Testing
+To send a test payload to a local dev Phoenix, use the following:
+
+For example, to test the `chucknorris` plugin:
+
+Run phoenix with `./phoenix -plugins chucknorris`
+
+`curl -XPOST 'http://localhost:8080/?token=abcdefg&team_id=1001&channel_id=C12345&channel_name=foo_channel&timestamp=1355517523.000005&user_id=1234&user_name=test&text=phoenix%20chucknorris&trigger_word=phoenix'`
