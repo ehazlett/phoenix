@@ -24,33 +24,33 @@ type (
 	}
 
 	WeatherResponse struct {
-		Message	string	`json:"message"`
-		List	[]List	`json:"list"`
+		Message string `json:"message"`
+		List    []List `json:"list"`
 	}
 
 	List struct {
-		Name	string	`json:"name"`
-		Main	MainList	`json:"main"`
-		Wind	WindList	`json:"wind"`
-		Sys	SysList		`json:"sys"`
-		Weather	[]Wthr	`json:"weather"`
+		Name    string   `json:"name"`
+		Main    MainList `json:"main"`
+		Wind    WindList `json:"wind"`
+		Sys     SysList  `json:"sys"`
+		Weather []Wthr   `json:"weather"`
 	}
 
 	Wthr struct {
-		Main	string	`json:"main"`
-		Desc	string	`json:"description"`
+		Main string `json:"main"`
+		Desc string `json:"description"`
 	}
 
 	MainList struct {
-		Temp	float32	`json:"temp"`
+		Temp float32 `json:"temp"`
 	}
 
 	WindList struct {
-		Speed	float32	`json:"speed"`
+		Speed float32 `json:"speed"`
 	}
 
 	SysList struct {
-		Country	string	`json:"country"`
+		Country string `json:"country"`
 	}
 )
 
@@ -89,7 +89,7 @@ func (plugin WeatherPlugin) Handle(message *phoenix.Message) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	data :=""
+	data := ""
 	if len(resp.List) == 0 {
 		return "", err
 	}
