@@ -40,6 +40,8 @@ func New(enabledPlugins []string) *Manager {
 	plugins["lebowski"] = Lebowski()
 	plugins["lmgtfy"] = Lmgtfy()
 	plugins["statusboard"] = StatusBoard()
+	plugins["weather"] = Weather()
+	plugins["manpage"] = Manpage()
 	// manager
 	manager := &Manager{
 		plugins:        plugins,
